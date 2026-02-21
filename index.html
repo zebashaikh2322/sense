@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>HireSense AI</title>
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+#role {
+  color: #ffffff !important;
+  background-color: #3C2A36 !important;
+}
+
+#role:focus {
+  color: #ffffff !important;
+} 
+input[type="file"] {
+  color: #ffffff !important;
+  background-color: #3C2A36 !important;
+}
+input[type="file"]::file-selector-button {
+  background: #C8A97E;
+  color: #2E1F27;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 8px;
+  margin-right: 10px;
+  font-weight: 600;
+}
+
+
+/* ================= GLOBAL ================= */
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: linear-gradient(135deg, #2E1F27, #3C2A36);
+  color: #F5EDE6;
+}
+
+.container-main {
+  max-width: 1150px;
+  margin: auto;
+  padding: 80px 20px;
+}
+
+/* ================= HEADER ================= */
+
+.app-title {
+  font-size: 44px;
+  font-weight: 700;
+  letter-spacing: -1px;
+  background: linear-gradient(90deg, #F5EDE6, #E6CFC3);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.app-subtitle {
+  font-size: 18px;
+  color: #D8C2B8;
+  margin-top: 10px;
+}
+
+/* ================= CARD SYSTEM ================= */
+
+.card-premium {
+  background: linear-gradient(145deg, #F5EDE6 0%, #E8D6CC 100%);
+  border-radius: 20px;
+  padding: 28px;
+  border: none;
+  color: #2E1F27;
+  box-shadow: 
+    0 20px 40px rgba(0,0,0,0.35),
+    inset 0 1px 0 rgba(255,255,255,0.4);
+  transition: 0.3s ease;
+}
+
+.card-premium:hover {
+  transform: translateY(-6px);
+  box-shadow: 
+    0 30px 60px rgba(0,0,0,0.45),
+    inset 0 1px 0 rgba(255,255,255,0.5);
+}
+
+.section-title {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #383533;
+  margin-bottom: 18px;
+}
+
+/* ================= INPUT ================= */
+
+.form-control {
+  background-color: #3C2A36;
+  border: 2px solid #C8A97E;
+  color: #ffffff;      /* FORCE WHITE */
+  border-radius: 14px;
+  padding: 14px;
+}
+
+.form-control::placeholder {
+  color: #d8c2b8;
+}
+
+.form-control:focus {
+  background-color: #3C2A36;
+  border-color: #E6CFC3;
+  box-shadow: 0 0 0 0.25rem rgba(200,169,126,0.4);
+  color: #ffffff;
+}
+/* ================= BUTTON ================= */
+
+.btn-primary-custom {
+  background: linear-gradient(90deg, #C8A97E, #E6CFC3);
+  border: none;
+  border-radius: 14px;
+  padding: 14px;
+  font-weight: 600;
+  color: #2E1F27;
+  transition: 0.3s ease;
+}
+
+.btn-primary-custom:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 30px rgba(200,169,126,0.4);
+}
+
+/* ================= SCANNER ================= */
+
+.scanner-box {
+  background: #1a0f14;          /* deeper dark */
+  height: 360px;
+  overflow-y: auto;
+  padding: 20px;
+  border-radius: 16px;
+  font-size: 13px;
+  border: 2px solid #C8A97E;    /* premium gold border */
+  box-shadow: inset 0 0 10px rgba(0,0,0,0.6);
+}
+#resumePreview {
+  color: #ffffff !important;     /* force bright white */
+  font-weight: 500;
+  line-height: 1.6;
+}
+/* ================= ANALYSIS ================= */
+
+.analysis-box {
+  height: 200px;
+  overflow-y: auto;
+  font-size: 14px;
+  line-height: 1.8;
+}
+
+/* Smooth AI Animation */
+.ai-text {
+  color: #151415;
+  font-weight: 500;
+  opacity: 1;
+  transform: none;
+}
+
+@keyframes fadeSlide {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ================= DASHBOARD ================= */
+
+.dashboard-grid div {
+  font-size: 14px;
+  margin-bottom: 10px;
+  color: #2E1F27;
+}
+
+.dashboard-grid span {
+  font-weight: 700;
+  color: #E6CFC3;
+}
+
+/* ================= LIST ================= */
+
+ul {
+  padding-left: 18px;
+}
+
+li {
+  margin-bottom: 8px;
+  font-size: 14px;
+  color: #2E1F27;
+}
+
+/* ================= FEEDBACK ================= */
+
+.feedback-text {
+  font-size: 14px;
+  line-height: 1.8;
+  color: #2E1F27;
+}
+.analysis-box {
+  height: 200px;
+  overflow-y: auto;
+  font-size: 14px;
+  line-height: 1.8;
+  color: #2E1F27;   /* dark text */
+}
+
+#sixScan {
+  color: #2E1F27;   /* force dark text */
+}
+.card-premium,
+.card-premium * {
+  color: #2E1F27 !important;
+}
+.scan-line {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(90deg, transparent, #C8A97E, transparent);
+  animation: scanning 1.5s linear infinite;
+}
+
+@keyframes scanning {
+  0% { top: 0; }
+  100% { top: 100%; }
+}
+
+input[type="file"] {
+  color: #ffffff;
+}
+</style>
+</head>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/mammoth@1.6.0/mammoth.browser.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jszip@3.10.1/dist/jszip.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/docx@8.11.2/build/index.min.js"></script>
+
+<body>
+
+<div class="container-main">
+
+  <!-- HEADER -->
+  <div class="text-center mb-5">
+    <div class="app-title">HireSense AI</div>
+    <div class="app-subtitle">
+      Career Intelligence for Ambitious Professionals.
+    </div>
+  </div>
+
+  <!-- INPUT SECTION -->
+  <div class="card-premium mb-5">
+
+    <div class="row g-3 align-items-center">
+      <div class="col-md-5">
+        <input type="text" id="role" class="form-control" placeholder="Target Role (e.g. Data Analyst)">
+      </div>
+      <div class="col-md-5">
+        <input type="file" id="resume" class="form-control" accept=".pdf,.docx,.doc,.txt">
+      </div>
+      <div class="col-md-2">
+        <button onclick="analyze()" class="btn btn-primary-custom w-100">
+          Analyze Resume
+        </button>
+      </div>
+      <div class="text-center mt-4 d-none" id="loadingSpinner">
+  <div class="spinner-border text-light" role="status">
+    <span class="visually-hidden">Loading...</span>
+  </div>
+  <div class="mt-2">Analyzing resume...</div>
+</div>
+    </div>
+
+    <!-- SCAN + ANALYSIS -->
+    <div class="row mt-5 g-4">
+
+      <!-- LEFT -->
+      <div class="col-md-6">
+        <div class="section-title">Resume Scanning</div>
+        <div class="scanner-box">
+          <div class="scanner-box position-relative">
+          <div id="scanLine" class="scan-line d-none"></div>
+          <pre id="resumePreview" style="white-space: pre-wrap;"></pre>
+          </div>
+          <pre id="resumePreview" style="white-space: pre-wrap;"></pre>
+        </div>
+      </div>
+
+      <!-- RIGHT -->
+      <div class="col-md-6">
+
+        <div class="section-title">Recruiter 6-Second Impression</div>
+        <div class="card-premium analysis-box mb-4">
+          <div id="sixScan" class="ai-text"></div>
+        </div>
+
+        <div class="section-title">Readiness Score Dashboard</div>
+        <div class="card-premium">
+
+  <div class="text-center mb-4">
+    <div class="circle" id="overallCircle">
+      <span id="overallScore">0%</span>
+    </div>
+    <div class="mt-2 fw-semibold">Overall Readiness</div>
+  </div>
+
+  <div class="row text-center">
+
+    <div class="col-6 col-md-3 mb-3">
+      <div class="mini-circle" id="skillCircle">
+        <span id="skillDepth">0%</span>
+      </div>
+      <small>Skill Depth</small>
+    </div>
+
+    <div class="col-6 col-md-3 mb-3">
+      <div class="mini-circle" id="projectCircle">
+        <span id="projectQuality">0%</span>
+      </div>
+      <small>Project Quality</small>
+    </div>
+
+    <div class="col-6 col-md-3 mb-3">
+      <div class="mini-circle" id="exposureCircle">
+        <span id="practicalExposure">0%</span>
+      </div>
+      <small>Practical Exposure</small>
+    </div>
+
+    <div class="col-6 col-md-3 mb-3">
+      <div class="mini-circle" id="toolsCircle">
+        <span id="toolsUsage">0%</span>
+      </div>
+      <small>Tools Usage</small>
+    </div>
+
+  </div>
+</div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- MISSING SKILLS -->
+  <div class="card-premium mb-4">
+    <div class="section-title">Missing Skills Detector</div>
+    <ul id="missingSkills"></ul>
+  </div>
+
+  <!-- FEEDBACK -->
+  <div class="card-premium">
+    <div class="section-title">Brutally Honest Feedback</div>
+    <p id="brutalFeedback" class="feedback-text"></p>
+
+    <div class="section-title mt-4">AI Suggestions</div>
+    <ul id="aiSuggestions"></ul>
+  </div>
+
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
